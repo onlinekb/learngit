@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style type="text/css">
+  #fruit{
+      width:300px;
+      height: 300px;
+      float: left;
+   
+      background-color: yellow;
+     border: 5px solid gray ;
+  }
+  #vegetables{
+      width: 300px;
+      height: 300px;
+      float: left;
+      margin: 0 50px;
+      background-color: greenyellow;
+      border: 5px solid gray ;
+  }
+  #div3{
+  
+      width: 660px;
+      height: 300px;
+      float: left;
+      clear: both;
+      margin-top:50px;
+      border: 5px solid gray;
+    
+  }
+</style>
+<body>
+    
+    <div id="fruit" ondragover="allowDrop(event)" ondrop ="drop1(event)"></div>
+    <div id="vegetables" ondragover="allowDrop(event)" ondrop ="drop2(event)"></div>
+    <div id = "div3">
+        <img id="fruit1" src="./images/1.png" ondragstart="drag(event)"/>
+        <img id="fruit2" src="./images/4.png" ondragstart="drag(event)"/>
+        <img id="fruit3" src="./images/6.png" ondragstart="drag(event)"/>
+        <img id="fruit4" src="./images/8.png" ondragstart="drag(event)"/>
+        <img id="vegetables1" src="./images/2.png" ondragstart="drag(event)"/>
+        <img id="vegetables2" src="./images/3.png" ondragstart="drag(event)"/>
+        <img id="vegetables3" src="./images/5.png" ondragstart="drag(event)"/>
+        <img id="vegetables4" src="./images/7.png" ondragstart="drag(event)"/>
+    </div>
+    <script type="text/javascript">
+       function drag(ev){
+           ev.dataTransfer.setData("text",ev.target.id)
+       }
+
+       function allowDrop(ev){
+           ev.preventDefault();
+       }
+
+       function drop1(ev){
+           ev.preventDefault();
+           var data = ev.dataTransfer.getData("text");
+
+           if(data.indexOf("fruit")>=0)
+           document.getElementById("fruit").appendChild(document.getElementById(data));
+           else
+           alert("不是水果");
+       }
+
+       function drop2(ev){
+           ev.preventDefault();
+           var data = ev.dataTransfer.getData("text");
+
+           if(data.indexOf("vegetables")>=0)
+           document.getElementById("vegetables").appendChild(document.getElementById(data));
+           else
+           alert("不是蔬菜");
+       }
+    </script>
+</body>
+</html>
